@@ -44,7 +44,7 @@ namespace DADOS
         }
 
 
-        public List<TBL_TEMP> PreencherCombo(int idcompra)
+        public List<TBL_TEMP> PreencherCombo()
         {
             try
             {
@@ -56,7 +56,6 @@ namespace DADOS
                                 on hist.CATEGORIA_COMPRA equals catc.ID_CATEGORIA
                                 join catp in db.GetTable<TBL_CATEGORIA_PAGAMENTO>() 
                                 on hist.FORMA_PAGAMENTO equals catp.ID_PAGAMENTO
-                                where hist.ID_COMPRA == idcompra
                                 select new TBL_TEMP(hist.ID_COMPRA, hist.DESCRICAO_COMPRA, catc.NOME_CATEGORIA, hist.DATA_COMPRA, catp.NOME_PAGAMENTO, hist.VALOR)).ToList();
 
                     return query;

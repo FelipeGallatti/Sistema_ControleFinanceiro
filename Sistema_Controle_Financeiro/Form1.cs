@@ -26,23 +26,13 @@ namespace Sistema_Controle_Financeiro
 
 
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnCadastrar_Click(object sender, EventArgs e)
-        {
-            FormCadastrarDivida formCadastrarDivida = new FormCadastrarDivida();
-            formCadastrarDivida.MdiParent = this;
-            formCadastrarDivida.Show();
-        }
-
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
-            FormCadastrarDivida formCadastrarDivida = new FormCadastrarDivida();
-            formCadastrarDivida.MdiParent = this;
-            formCadastrarDivida.Show();
+            UC_CadastrarDivida ucCadastrarDivida = new UC_CadastrarDivida();
+
+            panel1.Controls.Add(ucCadastrarDivida);
+            ucCadastrarDivida.Dock = DockStyle.Fill;
+            ucCadastrarDivida.Show();
         }
 
         private void Form1_Load(object sender, EventArgs e)

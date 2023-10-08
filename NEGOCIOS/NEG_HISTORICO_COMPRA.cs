@@ -24,11 +24,11 @@ namespace NEGOCIOS
             }
         }
 
-        public List<TBL_TEMP> PreencherCombo(int idcompra)
+        public List<TBL_TEMP> PreencherCombo()
         {
             try
             {
-               return ObjDad_HistCompras.PreencherCombo(idcompra);
+               return ObjDad_HistCompras.PreencherCombo();
             }
             catch (Exception ex)
             {

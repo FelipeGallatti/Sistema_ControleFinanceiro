@@ -11,11 +11,25 @@ namespace NEGOCIOS
     public class NEG_CADASTRAR_CONTA
     {
         DADOS.CRUD_CADASTRAR_CONTA ObjDad = new CRUD_CADASTRAR_CONTA();
+
+        public List<TBL_HISTORICO_COMPRAS> ListarCompras()
+        {
+            try
+            {
+                return ObjDad.ListarCompras();
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public List<TBL_CATEGORIA_COMPRAS> ListarCategorias()
         {
             try
             {
-               return ObjDad.ListarCategorias();
+                return ObjDad.ListarCategorias();
             }
             catch (Exception)
             {
@@ -29,7 +43,7 @@ namespace NEGOCIOS
 
             try
             {
-             return ObjDad.ListarCategoriaPagamento();
+                return ObjDad.ListarCategoriaPagamento();
             }
             catch (Exception ex)
             {
@@ -38,11 +52,11 @@ namespace NEGOCIOS
             }
         }
 
-        public void IncluirCompra(TBL_HISTORICO_COMPRAS ent)
+        public void IncluirCompra(string descricao, int categoria, DateTime dtCompra, int formaPagamento, decimal valor)
         {
             try
             {
-              ObjDad.IncluirCompra(ent);
+                ObjDad.IncluirCompra(descricao, categoria, dtCompra, formaPagamento, valor);
             }
             catch (Exception ex)
             {

@@ -13,6 +13,26 @@ namespace DADOS
     {
         private string connectionString = @"Data Source=DESKTOP-ECFLCP7\SQLEXPRESS;integrated security=SSPI;Initial Catalog=Sistema_Controle_Financas";
 
+
+        public List<TBL_HISTORICO_COMPRAS> ListarCompras()
+        {
+            try
+            {
+                using (var db = new conexao(connectionString))
+                {
+                    var lista = (from tbl in db.GetTable<TBL_HISTORICO_COMPRAS>()
+                                 select tbl).ToList();
+
+                    return lista;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
         public List<TBL_CATEGORIA_COMPRAS> ListarCategorias()
         {
             try
@@ -54,12 +74,19 @@ namespace DADOS
         }
 
 
-        public void IncluirCompra(TBL_HISTORICO_COMPRAS ent)
+        public void IncluirCompra(string descricao, int categoria, DateTime dtCompra, int formaPagamento, decimal valor)
         {
             try
             {
                 using (var db = new conexao(connectionString))
                 {
+                    TBL_HISTORICO_COMPRAS ent = new TBL_HISTORICO_COMPRAS();
+                    ent.DESCRICAO_COMPRA = descricao;
+                    ent.CATEGORIA_COMPRA = categoria;
+                    ent.DATA_COMPRA = dtCompra;
+                    ent.FORMA_PAGAMENTO = formaPagamento;
+                    ent.VALOR = valor;
+
                     db.GetTable<TBL_HISTORICO_COMPRAS>().InsertOnSubmit(ent);
                     db.SubmitChanges();
 
