@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NEG_BuscarEnderecoPorCEP.cs" />
     <Compile Include="NEG_CADASTRAR_CONTA.cs" />
     <Compile Include="NEG_HISTORICO_COMPRA.cs" />
     <Compile Include="NEG_LOGIN_USUARIO.cs" />

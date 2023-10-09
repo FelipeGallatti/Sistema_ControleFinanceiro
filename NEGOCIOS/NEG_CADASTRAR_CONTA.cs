@@ -65,6 +65,32 @@ namespace NEGOCIOS
             }
         }
 
+        public void AlterarCompra(int idcompra, string descricao, int categoria, DateTime dtCompra, int formaPagamento, decimal valor)
+        {
+            try
+            {
+                 ObjDad.AlterarCompra(idcompra, descricao, categoria, dtCompra, formaPagamento, valor);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public void ExcluirCompra(int idcompra)
+        {
+            try
+            {
+                 ObjDad.ExcluirCompra(idcompra);
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
 
     }
 }

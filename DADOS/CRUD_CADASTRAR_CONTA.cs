@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DADOS
 {
-    
+
     public class CRUD_CADASTRAR_CONTA
     {
         private string connectionString = @"Data Source=DESKTOP-ECFLCP7\SQLEXPRESS;integrated security=SSPI;Initial Catalog=Sistema_Controle_Financas";
@@ -69,7 +69,7 @@ namespace DADOS
             catch (Exception ex)
             {
 
-                throw new Exception(ex.Message.ToString()) ;
+                throw new Exception(ex.Message.ToString());
             }
         }
 
@@ -90,6 +90,59 @@ namespace DADOS
                     db.GetTable<TBL_HISTORICO_COMPRAS>().InsertOnSubmit(ent);
                     db.SubmitChanges();
 
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public void AlterarCompra(int idcompra, string descricao, int categoria, DateTime dtCompra, int formaPagamento, decimal valor)
+        {
+            try
+            {
+                using (var db = new conexao(connectionString))
+                {
+                    var lista = (from tbl in db.GetTable<TBL_HISTORICO_COMPRAS>()
+                                 where tbl.ID_COMPRA == idcompra
+                                 select tbl).FirstOrDefault();
+
+                    if (lista != null)
+                    {
+                        lista.DESCRICAO_COMPRA = descricao;
+                        lista.VALOR = valor;
+                        lista.FORMA_PAGAMENTO = formaPagamento;
+                        lista.CATEGORIA_COMPRA = categoria;
+                        lista.DATA_COMPRA = dtCompra;
+                        db.SubmitChanges();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message.ToString());
+            }
+        }
+
+        public void ExcluirCompra(int idcompra)
+        {
+            try
+            {
+                using (var db = new conexao(connectionString))
+                {
+                    var deletarlista = (from tbl in db.GetTable<TBL_HISTORICO_COMPRAS>()
+                                        where tbl.ID_COMPRA == idcompra
+                                        select tbl).FirstOrDefault();
+
+                    if (deletarlista != null)
+                    {
+                        db.GetTable<TBL_HISTORICO_COMPRAS>().DeleteOnSubmit(deletarlista);
+                        db.SubmitChanges();
+                    }
                 }
             }
             catch (Exception ex)

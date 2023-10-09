@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition1 = new Telerik.WinControls.UI.TableViewDefinition();
+            Telerik.WinControls.UI.TableViewDefinition tableViewDefinition2 = new Telerik.WinControls.UI.TableViewDefinition();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.cmbCategoria = new System.Windows.Forms.ComboBox();
@@ -48,6 +48,8 @@
             this.visualStudio2012LightTheme1 = new Telerik.WinControls.Themes.VisualStudio2012LightTheme();
             this.visualStudio2012DarkTheme1 = new Telerik.WinControls.Themes.VisualStudio2012DarkTheme();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rgvHistCompras)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rgvHistCompras.MasterTemplate)).BeginInit();
@@ -94,12 +96,13 @@
             // 
             // 
             this.rgvHistCompras.MasterTemplate.AutoSizeColumnsMode = Telerik.WinControls.UI.GridViewAutoSizeColumnsMode.Fill;
-            this.rgvHistCompras.MasterTemplate.ViewDefinition = tableViewDefinition1;
+            this.rgvHistCompras.MasterTemplate.ViewDefinition = tableViewDefinition2;
             this.rgvHistCompras.Name = "rgvHistCompras";
             this.rgvHistCompras.ShowGroupPanel = false;
             this.rgvHistCompras.Size = new System.Drawing.Size(174, 177);
             this.rgvHistCompras.TabIndex = 51;
             this.rgvHistCompras.ThemeName = "VisualStudio2012Light";
+            this.rgvHistCompras.CellClick += new Telerik.WinControls.UI.GridViewCellEventHandler(this.rgvHistCompras_CellClick);
             // 
             // label2
             // 
@@ -119,6 +122,7 @@
             this.btnDeletarConta.Size = new System.Drawing.Size(122, 48);
             this.btnDeletarConta.TabIndex = 50;
             this.btnDeletarConta.Text = "Remover Conta";
+            this.btnDeletarConta.Click += new System.EventHandler(this.btnDeletarConta_Click);
             // 
             // label4
             // 
@@ -138,6 +142,7 @@
             this.btnAlterarConta.Size = new System.Drawing.Size(122, 48);
             this.btnAlterarConta.TabIndex = 49;
             this.btnAlterarConta.Text = "Alterar Conta";
+            this.btnAlterarConta.Click += new System.EventHandler(this.btnAlterarConta_Click);
             // 
             // label3
             // 
@@ -218,10 +223,28 @@
             this.panel2.Size = new System.Drawing.Size(178, 181);
             this.panel2.TabIndex = 53;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(195, 87);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 54;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(361, 93);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(35, 13);
+            this.label6.TabIndex = 55;
+            this.label6.Text = "label6";
+            // 
             // UC_CadastrarDivida
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.cmbCategoria);
             this.Controls.Add(this.rgvHistCompras);
@@ -277,5 +300,7 @@
         private Telerik.WinControls.Themes.VisualStudio2012LightTheme visualStudio2012LightTheme1;
         private Telerik.WinControls.Themes.VisualStudio2012DarkTheme visualStudio2012DarkTheme1;
         private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label6;
     }
 }
