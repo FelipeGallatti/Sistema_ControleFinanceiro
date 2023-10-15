@@ -80,8 +80,10 @@
             // 
             this.txtSenha.Location = new System.Drawing.Point(51, 175);
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '●';
             this.txtSenha.Size = new System.Drawing.Size(226, 24);
             this.txtSenha.TabIndex = 7;
+            this.txtSenha.UseSystemPasswordChar = true;
             // 
             // btnEntrar
             // 

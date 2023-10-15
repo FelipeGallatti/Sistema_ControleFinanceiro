@@ -30,6 +30,12 @@ namespace Sistema_Controle_Financeiro
         {
             UC_CadastrarDivida ucCadastrarDivida = new UC_CadastrarDivida();
 
+            // Remove o UserControl atual, se houver algum
+            if (panel1.Controls.Count > 0)
+            {
+                panel1.Controls[0].Dispose();
+            }
+
             panel1.Controls.Add(ucCadastrarDivida);
             ucCadastrarDivida.Dock = DockStyle.Fill;
             ucCadastrarDivida.Show();
@@ -47,9 +53,31 @@ namespace Sistema_Controle_Financeiro
 
         private void btnHistorico_Click(object sender, EventArgs e)
         {
-            FormHistoricoCompra formHistoricoCompra = new FormHistoricoCompra();
-            formHistoricoCompra.MdiParent = this;
-            formHistoricoCompra.Show();
+
+            // Remove o UserControl atual, se houver algum
+            if (panel1.Controls.Count > 0)
+            {
+                panel1.Controls[0].Dispose();
+            }
+
+            UC_HistoricoCompra ucHistoricoCompra = new UC_HistoricoCompra();
+            panel1.Controls.Add(ucHistoricoCompra);
+            ucHistoricoCompra.Dock = DockStyle.Fill;
+            ucHistoricoCompra.Show();
+        }
+
+        private void btnResumo_Click(object sender, EventArgs e)
+        {
+            // Remove o UserControl atual, se houver algum
+            if (panel1.Controls.Count > 0)
+            {
+                panel1.Controls[0].Dispose();
+            }
+
+            UC_Resumo_Mensal ucPainelGerenciamento = new UC_Resumo_Mensal();
+            panel1.Controls.Add(ucPainelGerenciamento);
+            ucPainelGerenciamento.Dock = DockStyle.Fill;
+            ucPainelGerenciamento.Show();
         }
     }
 }

@@ -93,6 +93,7 @@
             this.btnResumo.Size = new System.Drawing.Size(151, 19);
             this.btnResumo.Text = "Resumo Mensal";
             this.btnResumo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnResumo.Click += new System.EventHandler(this.btnResumo_Click);
             // 
             // btnPainel
             // 

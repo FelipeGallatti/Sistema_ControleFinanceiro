@@ -10,6 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Telerik.WinControls.FileDialogs;
 using Telerik.WinControls.UI;
 
 namespace Sistema_Controle_Financeiro
@@ -82,7 +83,33 @@ namespace Sistema_Controle_Financeiro
 
         }
 
-        private void btnCadastrarConta_Click(object sender, EventArgs e)
+
+
+        private void rgvHistCompras_CellClick(object sender, GridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                // Obtenha o ID_COMPRA selecionado
+                txtDescricao.Text = rgvHistCompras.Rows[e.RowIndex].Cells["DESCRICAO_COMPRA"].Value.ToString();
+                txtValor.Text = rgvHistCompras.Rows[e.RowIndex].Cells["VALOR"].Value.ToString();
+                dtCompra.Value = Convert.ToDateTime(rgvHistCompras.Rows[e.RowIndex].Cells["DATA_COMPRA"].Value);
+                cmbCategoria.SelectedValue = rgvHistCompras.Rows[e.RowIndex].Cells["CATEGORIA_COMPRA"].Value;
+                cmbFormaPagamento.SelectedValue = rgvHistCompras.Rows[e.RowIndex].Cells["FORMA_PAGAMENTO"].Value;
+                idcompra = Convert.ToInt32(rgvHistCompras.Rows[e.RowIndex].Cells["ID_COMPRA"].Value);
+
+
+
+                // Atualize a ComboBox selecionando o item correspondente ao selectedID
+                //cb.SelectedValue = selectedID;
+            }
+        }
+
+        private void btnDeletarConta_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAdicionarConta_Click(object sender, EventArgs e)
         {
             try
             {
@@ -106,16 +133,23 @@ namespace Sistema_Controle_Financeiro
 
                 throw new Exception(ex.Message.ToString());
             }
-
         }
 
-
-        private async void btnAlterarConta_Click(object sender, EventArgs e)
+        private void btnAlterarConta_Click(object sender, EventArgs e)
         {
             try
             {
-                OBJNEG_CAD.AlterarCompra(idcompra, txtDescricao.Text, Convert.ToInt32(cmbCategoria.SelectedValue), dtCompra.Value, Convert.ToInt32(cmbFormaPagamento.SelectedValue), Convert.ToDecimal(txtValor.Text));
-                CarregarGridviewHistorico();
+                if (txtDescricao.Text == string.Empty) { MessageBox.Show("Preencha a descrição.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+                else if (cmbCategoria.SelectedIndex == -1) { MessageBox.Show("Selecione a categoria.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+                else if (cmbFormaPagamento.SelectedIndex == -1) { MessageBox.Show("Selecione a forma de pagamento.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+                else if (txtValor.Text == string.Empty) { MessageBox.Show("Preencha o valor.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+                else if (idcompra == 0) { MessageBox.Show("Antes de Alterar, você precisa clicar em uma compra antes", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information); }
+                else
+                {
+                    OBJNEG_CAD.AlterarCompra(idcompra, txtDescricao.Text, Convert.ToInt32(cmbCategoria.SelectedValue), dtCompra.Value, Convert.ToInt32(cmbFormaPagamento.SelectedValue), Convert.ToDecimal(txtValor.Text));
+                    CarregarGridviewHistorico();
+                    MessageBox.Show("Compra Alterada com Sucesso", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
             catch (Exception ex)
             {
@@ -124,30 +158,23 @@ namespace Sistema_Controle_Financeiro
             }
         }
 
-        private void rgvHistCompras_CellClick(object sender, GridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                // Obtenha o ID_COMPRA selecionado
-                txtDescricao.Text = rgvHistCompras.Rows[e.RowIndex].Cells["DESCRICAO_COMPRA"].Value.ToString();
-                txtValor.Text = rgvHistCompras.Rows[e.RowIndex].Cells["VALOR"].Value.ToString();
-                dtCompra.Value = Convert.ToDateTime(rgvHistCompras.Rows[e.RowIndex].Cells["DATA_COMPRA"].Value);
-                cmbCategoria.SelectedValue = rgvHistCompras.Rows[e.RowIndex].Cells["CATEGORIA_COMPRA"].Value;
-                cmbFormaPagamento.SelectedValue = rgvHistCompras.Rows[e.RowIndex].Cells["FORMA_PAGAMENTO"].Value;
-                idcompra = Convert.ToInt32(rgvHistCompras.Rows[e.RowIndex].Cells["ID_COMPRA"].Value);
-
-                // Atualize a ComboBox selecionando o item correspondente ao selectedID
-                //cb.SelectedValue = selectedID;
-            }
-        }
-
-        private void btnDeletarConta_Click(object sender, EventArgs e)
+        private void btnRemoverCompra_Click(object sender, EventArgs e)
         {
             try
             {
-                OBJNEG_CAD.ExcluirCompra(idcompra);
-                CarregarGridviewHistorico();
-                LimparCampos();
+                if (txtDescricao.Text == string.Empty) { MessageBox.Show("Preencha a descrição.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+                else if (cmbCategoria.SelectedIndex == -1) { MessageBox.Show("Selecione a categoria.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+                else if (cmbFormaPagamento.SelectedIndex == -1) { MessageBox.Show("Selecione a forma de pagamento.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+                else if (txtValor.Text == string.Empty) { MessageBox.Show("Preencha o valor.", "Alerta", MessageBoxButtons.OK, MessageBoxIcon.Asterisk); }
+                else if (idcompra == 0){MessageBox.Show("Antes de Remover, você precisa clicar em uma compra antes", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);}
+                else
+                {
+                    OBJNEG_CAD.ExcluirCompra(idcompra);
+                    CarregarGridviewHistorico();
+                    LimparCampos();
+                    MessageBox.Show("Compra Removida com Sucesso", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                }
             }
             catch (Exception ex)
             {

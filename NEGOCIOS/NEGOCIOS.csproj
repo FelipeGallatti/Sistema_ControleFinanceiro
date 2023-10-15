@@ -45,6 +45,7 @@
     <Compile Include="NEG_CADASTRAR_CONTA.cs" />
     <Compile Include="NEG_HISTORICO_COMPRA.cs" />
     <Compile Include="NEG_LOGIN_USUARIO.cs" />
+    <Compile Include="NEG_RESUMO_MENSAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

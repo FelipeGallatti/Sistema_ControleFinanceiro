@@ -62,12 +62,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormHistoricoCompra.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormHistoricoCompra.Designer.cs">
-      <DependentUpon>FormHistoricoCompra.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,11 +76,20 @@
     <Compile Include="UC_CadastrarDivida.Designer.cs">
       <DependentUpon>UC_CadastrarDivida.cs</DependentUpon>
     </Compile>
+    <Compile Include="UC_HistoricoCompra.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_HistoricoCompra.Designer.cs">
+      <DependentUpon>UC_HistoricoCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UC_Resumo_Mensal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UC_Resumo_Mensal.Designer.cs">
+      <DependentUpon>UC_Resumo_Mensal.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FormHistoricoCompra.resx">
-      <DependentUpon>FormHistoricoCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -103,6 +106,12 @@
     </Compile>
     <EmbeddedResource Include="UC_CadastrarDivida.resx">
       <DependentUpon>UC_CadastrarDivida.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_HistoricoCompra.resx">
+      <DependentUpon>UC_HistoricoCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UC_Resumo_Mensal.resx">
+      <DependentUpon>UC_Resumo_Mensal.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

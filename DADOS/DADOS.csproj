@@ -49,6 +49,7 @@
     <Compile Include="conexao.cs" />
     <Compile Include="CRUD_CADASTRAR_CONTA.cs" />
     <Compile Include="CRUD_HISTORICO_COMPRA.cs" />
+    <Compile Include="CRUD_RESUMO_MENSAL.cs" />
     <Compile Include="CRUD_LOGIN_USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
