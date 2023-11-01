@@ -11,7 +11,7 @@ namespace NEGOCIOS
     public class NEG_RESUMO_MENSAL
     {
         DADOS.CRUD_RESUMO_MENSAL ObjDad_Resumo = new CRUD_RESUMO_MENSAL();
-        public List<TBL_HISTORICO_COMPRAS> ListarHistoricoMensal(int categoria, int formaPagamento)
+        public List<object> ListarHistoricoMensal(int categoria, int formaPagamento)
         {
             try
             {

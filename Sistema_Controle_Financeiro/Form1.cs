@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -47,8 +48,10 @@ namespace Sistema_Controle_Financeiro
             //btnPainel.Size = new Size(151, 50);
             //btnResumo.Size = new Size(151, 50);
             //btnHistorico.Size = new Size(151, 50);
+          var id =  System.IO.Path.Combine(@"C:\users\" + WindowsIdentity.GetCurrent().Name.Replace(@"CORP\", "") + @"\documents\");
 
-            
+
+
         }
 
         private void btnHistorico_Click(object sender, EventArgs e)
